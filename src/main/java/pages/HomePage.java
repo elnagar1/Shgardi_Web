@@ -13,9 +13,10 @@ public class HomePage extends PageBase
 	public HomePage(WebDriver driver) {
 		super(driver);
 		jse = (JavascriptExecutor) driver; 
-		action = new Actions(driver); 
+		action = new Actions(driver);
+
 	}
-	
+
 	@FindBy(css="a.ico-register")
 	WebElement registerLink ; 
 
@@ -48,7 +49,7 @@ public class HomePage extends PageBase
 	public void openContactUsPage() 
 	
 	{
-		scrollToBottom();
+	//	scrollToBottom();
 		clickButton(contactUsLink);
 	}
 	

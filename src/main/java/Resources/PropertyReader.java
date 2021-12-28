@@ -1,12 +1,9 @@
 package Resources;
 
 import Utils.PathHelper;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
-
-
 
 public class PropertyReader implements ConfigurationReader{
 	
@@ -22,70 +19,54 @@ public class PropertyReader implements ConfigurationReader{
 		} catch (IOException e) {
 			System.out.println("Error occurred :  " + e.getMessage());
 		}
-		catch (NullPointerException e) {
+		  catch (NullPointerException e) {
 			System.out.println("Error occurred :  " + e.getMessage());
 		}
 
 	}
 
-	
-	
 	@Override
-	public String getplatformName() {
-		return properties.getProperty("");
-	}
-	
-	
-
-	
-
-	@Override
-	public String getApp() {
-		return null;
-		
-	}
-	
-	
-	@Override
-	public String getplatformVersion() {
-		return properties.getProperty("");
-		
-	}
-	
-	@Override
-	public String getUrl() {
-		return properties.getProperty("url");
+	public String getR_User() {
+		return properties.getProperty("r_user");
 	}
 
-	
+	@Override
+	public String getR_Password() {
+		return properties.getProperty("r_password");
+	}
+
+	@Override
+	public String getInValidMobile() {
+		return properties.getProperty("invalid_phone");
+	}
+
+	@Override
+	public String getValidUnregisteredPhone() {
+		return properties.getProperty("un_register_phone");
+	}
+
 	@Override
 	public String getBrowser() {
-		return properties.getProperty("browser");
+		return  properties.getProperty("browser");
+	}
+
+	@Override
+	public String getInValidPassword() {
+		return  properties.getProperty("invalid_password");
+	}
+
+	@Override
+	public String getValidMobile() {
+		return properties.getProperty("phone");
 	}
 
 	
 	@Override
-	public int getPageLoadTimeOut() {
-		return Integer.parseInt(properties.getProperty("PageLoadTimeOut"));
-	}
-
-	
-	@Override
-	public String getUsername() {
-		return properties.getProperty("username");	
-	}
-
-	
-	@Override
-	public String getPassword() {
+	public String getValidPassword() {
 		return properties.getProperty("password");
 	}
 
-	
-	@Override
-	public String getProduct() {
-		return properties.getProperty("product");	
-	}
+
 
 	
 }

@@ -1,15 +1,22 @@
 package Resources;
 
 public interface ConfigurationReader {
-	
-	public String getUrl();
-	public String getBrowser();
-	public int getPageLoadTimeOut();
-	public String getUsername();
-	public String getPassword();
-	public String getProduct();
-    public String getplatformName();
-	public String getplatformVersion();
-	public String getApp();
 
+    //داتا رئيسيه
+	public String getR_User();
+	public String getR_Password();
+
+
+    //داتا عاديه
+    public String getValidMobile();
+
+    public String getValidPassword();
+
+    public String getInValidMobile();
+
+    public String getInValidPassword();
+
+    public String getValidUnregisteredPhone();
+
+    public String getBrowser();
 }

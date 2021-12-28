@@ -13,8 +13,7 @@ import java.nio.file.Paths;
 
 
 public class Helper {
-
-	// Method to take screenshot when the test cases fail
+ 	// Method to take screenshot when the test cases fail
 	public static void captureScreenshot(WebDriver driver , String screenshotname) 
 	{
 		Path dest = Paths.get("./Screenshots", screenshotname+".png");

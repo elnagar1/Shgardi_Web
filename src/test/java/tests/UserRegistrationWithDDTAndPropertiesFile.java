@@ -18,7 +18,7 @@ public class UserRegistrationWithDDTAndPropertiesFile extends TestBase
 //	String firtname = LoadProperties.userData.getProperty("firstname");
 //	String lastname = LoadProperties.userData.getProperty("lastname");
 //	String email = LoadProperties.userData.getProperty("email");
-//	String Password = LoadProperties.userData.getProperty("password");
+//	String Password = LoadProperties.userData.getProperty("USERNAME");
 
 	@Test(priority=1,alwaysRun=true)
 	public void UserCanRegisterSuccssfully() 

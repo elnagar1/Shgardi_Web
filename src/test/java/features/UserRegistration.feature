@@ -10,5 +10,5 @@ Feature: User Registration
  	Examples:
  	 | firstname | lastname | email | password |
  	 | ahmed | mohamed | ahmed@user434.com | 12345678 |
- 	 | Moataz | ahmed | test@newuser233.com | 87654321 |
+ 	 | Moataz | ahmed | test@newuser23 3.com | 87654321 |
  	  
