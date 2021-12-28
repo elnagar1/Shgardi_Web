@@ -8,24 +8,25 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.Assert;
 import org.testng.ITestResult;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 import pages.LoginPage;
 import utilities.Helper;
 
 import java.util.concurrent.TimeUnit;
 
-public class TestBase  {
-	public static WebDriver driver;
-	LoginPage loginPage;
+public class TestBase {
+    public static WebDriver driver;
+    LoginPage loginPage;
 
-	public String USERNAME = PageBase.reader.getR_User();
-	public String ACCESS_KEY = PageBase.reader.getR_Password();
-	String browser = PageBase.reader.getBrowser().toLowerCase();
-	public static String downloadPath = System.getProperty("user.dir") + "\\Downloads";
+    public String USERNAME = PageBase.reader.getR_User();
+    public String ACCESS_KEY = PageBase.reader.getR_Password();
+    String browser = PageBase.reader.getBrowser().toLowerCase();
+    public static String downloadPath = System.getProperty("user.dir") + "\\Downloads";
 
-	//مؤجل
+    //مؤجل
     /*
 	public static FirefoxOptions firefoxOption() {
 		FirefoxOptions option = new FirefoxOptions();
@@ -48,54 +49,58 @@ public class TestBase  {
 	}
 */
 
-	@BeforeSuite
-	public void startDriver() {
+    @BeforeClass
+    public void startDriver() {
 
-	     System.out.println("Selected Browser is: "+browser);
+        System.out.println("Selected Browser is: " + browser);
 
-		if (browser.equalsIgnoreCase("chrome")) {
+        if (browser.equalsIgnoreCase("chrome")) {
 
-			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver();
-			System.out.println("Chrome Browser is Started" + driver.hashCode());
+            WebDriverManager.chromedriver().setup();
+            driver = new ChromeDriver();
+            System.out.println("Chrome Browser is Started" + driver.hashCode());
 
-		} else if (browser.equalsIgnoreCase("firefox")) {
-			WebDriverManager.firefoxdriver().setup();
-			driver = new FirefoxDriver();
-			System.out.println("Chrome Browser is Started" + driver.hashCode());
+        } else if (browser.equalsIgnoreCase("firefox")) {
+            WebDriverManager.firefoxdriver().setup();
+            driver = new FirefoxDriver();
+            System.out.println("Chrome Browser is Started" + driver.hashCode());
 
-		} else if (browser.equalsIgnoreCase("ie")) {
-			WebDriverManager.iedriver().setup();
-			driver = new InternetExplorerDriver();
-			System.out.println("Chrome Browser is Started" + driver.hashCode());
-		}
+        } else if (browser.equalsIgnoreCase("ie")) {
+            WebDriverManager.iedriver().setup();
+            driver = new InternetExplorerDriver();
+            System.out.println("Chrome Browser is Started" + driver.hashCode());
+        }
 
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
-		driver.navigate().to("https://dashboard-dev.shgardi.app/auth/login");
-		System.out.println("Open: "+driver.getCurrentUrl());
-
-		USERNAME = PageBase.reader.getValidPassword();
-		ACCESS_KEY = PageBase.reader.getValidMobile();
-		loginPage = new LoginPage(driver);
-		String A1 = loginPage.UserLogin(ACCESS_KEY, USERNAME);
-		Assert.assertTrue(A1.contains( "MainActivity"));
-		System.out.println(A1);
-	}
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
+        driver.navigate().to("https://dashboard-dev.shgardi.app/auth/login");
+        System.out.println("Open: " + driver.getCurrentUrl());
 
 
-	@AfterSuite
-	public void stopDriver() {
-		//driver.quit();
-	}
+    }
 
-	// take screenshot when test case fail and add it in the Screenshot folder
-	@AfterMethod
-	public void screenshotOnFailure(ITestResult result) {
-		if (result.getStatus() == ITestResult.FAILURE) {
-			System.out.println("Failed!");
-			System.out.println("Taking Screenshot....");
-			Helper.captureScreenshot(driver, result.getName());
-		}
-	}
+    @Test
+    public void loginValidPhoneAndPassword() {
+
+
+        loginPage = new LoginPage(driver);
+        String A1 = loginPage.userLogin(USERNAME, ACCESS_KEY);
+        Assert.assertTrue(A1.contains("home"));
+        System.out.println("Open: " + A1);
+    }
+
+    @AfterClass
+    public void stopDriver() {
+        //driver.quit();
+    }
+
+    // take screenshot when test case fail and add it in the Screenshot folder
+    @AfterMethod
+    public void screenshotOnFailure(ITestResult result) {
+        if (result.getStatus() == ITestResult.FAILURE) {
+            System.out.println("Failed!");
+            System.out.println("Taking Screenshot....");
+            Helper.captureScreenshot(driver, result.getName());
+        }
+    }
 }

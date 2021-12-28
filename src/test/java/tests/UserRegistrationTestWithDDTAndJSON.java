@@ -34,7 +34,7 @@ public class UserRegistrationTestWithDDTAndJSON extends TestBase
 		registerObject.userLogout();
 		homeObject.openLoginPage();
 		loginObject = new LoginPage(driver); 
-		loginObject.UserLogin(jsonReader.email, jsonReader.password);
+		loginObject.userLogin(jsonReader.email, jsonReader.password);
 		Assert.assertTrue(registerObject.logoutLink.getText().contains("Log out"));
 		registerObject.userLogout();
 	}

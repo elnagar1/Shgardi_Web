@@ -44,7 +44,7 @@ public class UserRegistrationTestWithJavaFaker extends TestBase
 	{
 		homeObject.openLoginPage();
 		loginObject = new LoginPage(driver); 
-		loginObject.UserLogin(email,password);
+		loginObject.userLogin(email,password);
 		Assert.assertTrue(registerObject.logoutLink.getText().contains("Log out"));
 	}
 }

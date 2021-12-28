@@ -36,7 +36,7 @@ public class UserRegistrationTest extends TestBase
 	{
 		homeObject.openLoginPage();
 		loginObject = new LoginPage(driver); 
-		loginObject.UserLogin("test126@gmail.com", "12345678");
+		loginObject.userLogin("test126@gmail.com", "12345678");
 		Assert.assertTrue(registerObject.logoutLink.getText().contains("Log out"));
 	}
 }

@@ -38,7 +38,7 @@ public class UserRegistrationTestWithDDTAndExcel extends TestBase
 		registerObject.userLogout();
 		homeObject.openLoginPage();
 		loginObject = new LoginPage(driver); 
-		loginObject.UserLogin(email,password);
+		loginObject.userLogin(email,password);
 		Assert.assertTrue(registerObject.logoutLink.getText().contains("Log out"));
 		registerObject.userLogout();
 	}
