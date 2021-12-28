@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" verbose="0" name="Failed suite [Surefire suite]">
+  <test thread-count="1" verbose="0" name="Surefire test(failed)">
+    <classes>
+      <class name="tests.TestBase">
+        <methods>
+          <include name="startDriver"/>
+          <include name="setUpClass"/>
+          <include name="stopDriver"/>
+          <include name="feature"/>
+          <include name="screenshotOnFailure"/>
+          <include name="tearDownClass"/>
+        </methods>
+      </class> <!-- tests.TestBase -->
+      <class name="runner.TestRunner">
+        <methods>
+          <include name="startDriver"/>
+          <include name="setUpClass"/>
+          <include name="stopDriver"/>
+          <include name="feature"/>
+          <include name="screenshotOnFailure"/>
+          <include name="tearDownClass"/>
+        </methods>
+      </class> <!-- runner.TestRunner -->
+      <class name="tests.LoginTest">
+        <methods>
+          <include name="screenshotOnFailure"/>
+          <include name="login1"/>
+          <include name="startDriver"/>
+        </methods>
+      </class> <!-- tests.LoginTest -->
+      <class name="tests.UserRegistrationTest">
+        <methods>
+          <include name="startDriver"/>
+          <include name="setUpClass"/>
+          <include name="stopDriver"/>
+          <include name="feature"/>
+          <include name="screenshotOnFailure"/>
+          <include name="UserCanRegisterSuccssfully"/>
+          <include name="RegisteredUserCanLogout"/>
+          <include name="tearDownClass"/>
+          <include name="RegisteredUserCanLogin"/>
+        </methods>
+      </class> <!-- tests.UserRegistrationTest -->
+    </classes>
+  </test> <!-- Surefire test(failed) -->
+</suite> <!-- Failed suite [Surefire suite] -->
